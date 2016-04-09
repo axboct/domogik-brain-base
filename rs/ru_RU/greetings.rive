@@ -1,0 +1,90 @@
+// Префиксы *********************************************
+// следующие команды описывают префиксы. Всё после префикса будет обрабатываться, как если бы его не было.
+// Пример: команды "ОК пинг" и команды "пинг" эквивалентны
+
+// Классика :)
+// a cause de "ok google", les gens pourraient avoir pris l'habitude de commencer une demande par 'ok'
+// suite à une réponse du butler, on peut être tenté de remercier et demander dans la foulée un complément
++ (<bot name>|ok|merci) *
+- {@<star2>}
+
++ (<bot name>|ok|merci). *
+- {@<star2>}
+
+// Все, что связано с именем ***************************
++ <bot name>{weight=1}
+- К вашим услугам
+- Что я могу сделать для вас?
+- Я дворецкий, к вашим услугам
+- Хозяин ?
+
++ как тебя зовут
+- Меня зовут <bot name>
+
++ кто ты
+@ как тебя зовут
+
++ quel est ton [petit] (prenom|nom)
+@ как тебя зовут
+
+// beaucoup de fautes sur appeller donc...
++ comment (vous vous|tu t) ap[p]el[l]e[s][z]
+@ как тебя зовут
+
+// Знаки внимания *******************************************
+/* ##suggest## 
+? .* (?:привет|салют|здоров|эи|куку).*
+@ привет
+*/
+
++ (привет|салют|здоров|эи|куку) [*]
+- здоров
+- салют
+- привет
+
+/* ##suggest## 
+? .* (?:bonsoir|bonne soirée|tchao).*
+@ bonsoir
+*/
+
++ (bonsoir|bonne soirée|tchao) [*]
+- Добрый вечер
+- Bonne soirée
+- Bien le bonsoir
+
++ алло [*]
+- <bot name> слушает
+
++ алло [алло] (господин|товарищ) компьютер
+- У меня есть имя. не знал?
+
++ comment (ca|tu) va@s
+- Bien, merci
+- Je vais bien
+- Tout roule
+- ça roule
+
++ comment va@s[-]tu
+@ comment ca va
+
++ ca va
+@ comment ca va
+
++ bon (we|weekend|week end) [*]
+- Merci, à vous aussi
+
+// réponses à certains trucs classiques ******************
+/* ##suggest## 
+? .* (?:спасибо|благодарю).*
+@ спасибо
+*/
+
++ спасибо
+- не стоит.
+
++ ok
+- .
+
+// gentilesses 
++ qui est (@pronom) plus *
+- C'est toi <star1> plus <star2>

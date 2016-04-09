@@ -1,0 +1,19 @@
+// ##feature##
+
+/* ##suggest## 
+? .* влажность.* ((?:в |на ).*(е))
+@ скажи влажность <star1>
+*/
+
+
+// контекстное
++ shortcut humidity *
+- Влажность <call>get_sensor_value ru_RU, DT_Humidity, проц., <star></call>
+
+// Фразы
++ @say влажность [@where] *(е)
+@shortcut humidity <star1>
+
+
+
+

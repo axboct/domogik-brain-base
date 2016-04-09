@@ -1,0 +1,56 @@
+> object get_age python
+    # i18n
+    ZERO_YEAR = u"Я родился в этом году"
+    YEARS = u"лет"
+    YEAR = u"год"
+    YEAR_M= u"года"
+
+
+    YEAR_BIRTH  = 2015
+    YEAR_FORMAT = "%Y"
+
+    import time
+    now = time.localtime(time.time())
+    age = abs(YEAR_BIRTH - int(time.strftime(YEAR_FORMAT, now)))
+    ages = age % 10;
+    age2 = (age % 100);
+    if age == 0:
+        return u"{0}".format(ZERO_YEAR)
+    elif ages == 1:
+        return u"{0} {1}".format(age, YEAR)
+    elif age2 >= 10 and age2 <= 19:
+	return u"{0} {1}".format(age, YEARS)
+    elif ages >= 2 and age2 <=4:
+        return u"{0} {1}".format(age, YEAR_M)
+    else:
+        return u"{0} {1}".format(age, YEARS)
+< object
+
+// ##feature## рассказать о себе
+
++ (расскажи о себе|представься)
+- Меня зовут <bot name> и я виртуальный дворецкий этого дома.
+^  Я часть пакета автоматизации по имени Domogik и обеспечиваю голосовое взаимодействие между вами и домом. 
+^  Вы можете спросить у меня значения датчика, попросить управлять освещением и множество других вещей. 
+^  У меня модульная структура и мои возможности будут расти со временем..
+
+// родственники **********************************
++ кто твои (папа|отец|создатель)
+- Мой отец Fritz,
+// mais il a été aidé par plein de contributeurs.
+
++ кто твоя (мать|мама)
+- У меня нет матери, у меня есть отец,
+// но и полный вкладчиков.
+
+
+// возраст **************************************
++ shortcut age
+- <call>get_age</call> 
+
++ сколько тебе лет
+@ shortcut age
+
++ твои возраст
+@ shortcut age
+

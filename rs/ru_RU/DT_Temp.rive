@@ -1,0 +1,20 @@
+// ##feature## определить температуру
+
+/* ##suggest## 
+? .* температура.* ((?:в |на ).*)
+@ скажи температуру <star1>
+*/
+
+
+// контекстное
++ shortcut temperature *
+- Температура <call>get_sensor_value ru_RU, DT_Temp, град., <star></call> 
+
+// Фразы
++ сколько градусов [@where] *(е)
+@shortcut temperature <star>
+
++ @say температуру [@where] *(е)
+@shortcut temperature <star1>
+
+

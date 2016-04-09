@@ -1,0 +1,37 @@
+> object star python
+    from domogik.butler.brain import process_star
+    # i18n
+    RESPONSES = [u"Я не понимаю",
+                 u"Что Вы имеете ввиду?"]
+    SUGGEST_INTRODUCTION = u"Означает ли это :"
+
+    rs.set_uservar(rs.current_user(), "last_input", " ".join(args))
+
+    # we use rs to directly get the input content
+    return process_star(RESPONSES, SUGGEST_INTRODUCTION, rs)
+< object
+
+> object learn_from_suggestion python
+    from domogik.butler.brain import learn_from_suggestion
+    learn_from_suggestion(rs)
+< object
+
+// Реакция и предложения по умолчанию
++ *{weight=1}
+- <call>star <star></call>
+
++ да
+% означает ли это *
+@ <call>learn_from_suggestion</call><get last_input>
+
++ нет
+% означает ли это *
+- Плохо.
+
+// для "ненужных" ответов: мы будем избегать спрашивать "вы можете перефразировать" или другой ...
++ да {weight=1}
+- .
+
++ нет {weight=1}
+- .
+

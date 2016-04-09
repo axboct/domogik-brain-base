@@ -1,0 +1,27 @@
+// i18n
+! sub + = плюс
+! sub - = минус
+! sub / = разделить
+! sub divisé par = разделить
+! sub * = умножить
+! sub x = разделить
+
+> object calc python
+    from domogik_packages.brain_base.lib.maths import calc
+    # i18n
+    ERROR_BAD_FORMULA = u"Вы дали мне формулу которую я не в состоянии обработать"
+    OPERANDS = {u"плюс" : "+",
+                u"минус" : "-",
+                u"умножить" : "*",
+                u"разделить" : "/"}
+    
+    return calc(args, OPERANDS, ERROR_BAD_FORMULA)
+< object
+
+// ##feature## рассчиттать 
+
++ calculer *
+- <call>calc <star></call>
+
++ (вычисли | сколько | какой результат | рассчитаи) *
+@ calculer <star2>
