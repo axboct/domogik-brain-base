@@ -15,7 +15,16 @@
 ! array quel = quel quelle quels quelles
 
 // pour les sensors 
-! array donneMoi = donne moi|donnes moi|quel est|quelle est|dis moi
+! array donneMoi = donne-moi|donnes-moi|donne moi|donnes moi|quel-est|quelle-est|quel est|quelle est|dis-moi|dis moi
 
 // pour des demandes
 ! array peuxTu = peux tu|peux-tu|est ce que tu peux|est-ce que tu peux
+
+// pour se nommer
+! array jeSuis = je suis|je m appelle|je me nomme|je me prenomme|mon prenom est|mon identite est|mon surnom est|mon nom est
+
+//////////////////////////////////////////////////
+// Unités
+
+! array pourcent = pourcentages|pourcentage|pourcents|pourcent
+! array kg = kilogrammes|kilogramme|kilo grammes|kilo grammes|kilos|kilo|kg
