@@ -12,6 +12,7 @@
 ? .* (?:etein|eteigne).* ((?:la |le |l ).*)
 @ eteindre <star1> 
 */
+! array onoff = la lumiere|les lumieres|la lampe|les lampes
 
 + shortcut bool command * dev * val *
 - <call>do_command fr_FR, <star1>, <star2>, <star3></call>
@@ -19,35 +20,41 @@
 + (allume|allumes|allumer) [@pronom] *
 @ shortcut bool command DT_Switch|DT_ColorRGBHexa dev <star2> val 1
 
-+ (etein|eteins|eteindre) [@pronom] *
++ (allume|allumes|allumer) (@onoff) [@cible] *
+@ shortcut bool command DT_Switch|DT_ColorRGBHexa dev <star3> val 1
+
++ (etein|eteins|eteind|eteint|eteindre) [@pronom] *
 @ shortcut bool command DT_Switch|DT_ColorRGBHexa dev <star2> val 0
+
++ (etein|eteins|eteind|eteint|eteindre) (@onoff) [@cible] *
+@ shortcut bool command DT_Switch|DT_ColorRGBHexa dev <star3> val 0
 
 
 
 // note : volet et rideau au pluriel car il peut y en avoir 2 par ouvrant
 ! array openclose = la porte fenetre|la porte de garage|la porte|la fenetre|la baie vitree|la baie|le volet|les volets|la persienne|le rideau|les rideaux|le store|le velux
 
-+ (ouvre|ouvres|monte|montes) (@openclose) [@cible] *
-@ shortcut bool command DT_Switch|DT_OpenClose dev <star3> val 1
-
-+ (ouvre|ouvres|monte|montes) [@pronom] *
++ (ouvre|ouvres|ouvrir|monte|montes|monter) [@pronom] *
 @ shortcut bool command DT_Switch|DT_OpenClose dev <star2> val 1
 
-+ (ferme|fermes|descend|descends) (@openclose) [@cible] *
-@ shortcut bool command DT_Switch|DT_OpenClose dev <star3> val 0
++ (ouvre|ouvres|ouvrir|monte|montes|monter) (@openclose) [@cible] *
+@ shortcut bool command DT_Switch|DT_OpenClose dev <star3> val 1
 
-+ (ferme|fermes|descend|descends) [@pronom] *
++ (ferme|fermes|fermer|descend|descends|descendre) [@pronom] *
 @ shortcut bool command DT_Switch|DT_OpenClose dev <star2> val 0
 
++ (ferme|fermes|fermer|descend|descends|descendre) (@openclose) [@cible] *
+@ shortcut bool command DT_Switch|DT_OpenClose dev <star3> val 0
 
 
 
 
-+ active [@pronom] *
-@ shortcut bool command DT_Enable dev <star1> val 1
 
-+ desactive [@pronom] *
-@ shortcut bool command DT_Enable dev <star1> val 0
++ (active|activer) [@pronom] *
+@ shortcut bool command DT_Enable dev <star2> val 1
+
++ (desactive|desactiver) [@pronom] *
+@ shortcut bool command DT_Enable dev <star2> val 0
 
 
 //////// Lumières/prises - Etat - 1 - status
@@ -143,6 +150,6 @@
 + est[-]ce que (@openclose) [@cible] * est ouvert@e
 @ shortcut is openclose open <star2> 
 
-+ est[-]ce que [@pronom] * est (eteinte|coupe@e)
++ est[-]ce que [@pronom] * est ouvert@e
 @ shortcut is openclose open <star1> 
 
